@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Campus Recruitment System</string>
+    <string name="student_name">Studet Name</string>
+    <string name="program_title">Program Title</string>
+    <string name="student_picker">Student</string>
+    <string name="company_picker">Company</string>
+    <string name="profile_picker">Choose Account Type</string>
+    <string name="or">OR</string>
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "986467557433",
+    "firebase_url": "https://campusrecruitmentsystem-a63b1.firebaseio.com",
+    "project_id": "campusrecruitmentsystem-a63b1",
+    "storage_bucket": "campusrecruitmentsystem-a63b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986467557433:android:c89a35ee272836e0",
+        "android_client_info": {
+          "package_name": "com.example.hamid_pc.campusrecruitmentsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986467557433-v6fi3oqqu685jq445qcd07tp0275uh4a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hamid_pc.campusrecruitmentsystem",
+            "certificate_hash": "fbd87f19bf2c9c1e5a207d98914840717886177a"
+          }
+        },
+        {
+          "client_id": "986467557433-479230qrj96115fovkabffa86sog38mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVM9mMCVoB4egwTL5pB0Jr_UharBRSgyc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986467557433-479230qrj96115fovkabffa86sog38mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

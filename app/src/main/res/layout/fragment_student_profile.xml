@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_user"
+        android:layout_gravity="center"/>
+
+
+     <TextView
+         android:text="name"
+         android:id="@+id/student_name"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textAlignment="center" />
+
+
+    <TextView
+        android:text="contact"
+        android:id="@+id/student_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center" />
+
+
+    <TextView
+        android:text="certificate"
+        android:id="@+id/certificate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:textAlignment="viewStart" />
+
+
+    <TextView
+        android:text="cgpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cgpa" />
+
+    <TextView
+        android:text="skill"
+        android:id="@+id/skill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:text="program enrolled"
+        android:id="@+id/program_enrolled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:textAlignment="viewStart"/>
+
+
+</LinearLayout>
