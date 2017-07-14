@@ -26,6 +26,10 @@
         <activity android:name=".ProfileDataActivity">
         </activity>
 
+
+        <activity android:name=".StudentProfileCreationActivity">
+        </activity>
+
     </application>
 
 </manifest>

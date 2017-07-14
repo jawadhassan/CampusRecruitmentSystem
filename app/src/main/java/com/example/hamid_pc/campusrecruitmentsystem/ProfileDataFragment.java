@@ -1,5 +1,6 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -46,6 +47,9 @@ public class ProfileDataFragment  extends Fragment{
                 //Intent intent = StudentProfileActivity.newIntent(getContext());
                 //startActivity(intent);
                 Log.d("Check","In Profile DataFragment: Student Selected");
+                Intent studentProfileIntent = StudentProfileCreationActivity.NewIntent(getActivity());
+                startActivity(studentProfileIntent);
+
             }
         });
         return view;

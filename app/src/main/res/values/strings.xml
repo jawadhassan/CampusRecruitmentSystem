@@ -5,5 +5,11 @@
     <string name="student_picker">Student</string>
     <string name="company_picker">Company</string>
     <string name="profile_picker">Choose Account Type</string>
+    <string name="profile_edittext_cgpa">Enter CGPA</string>
+    <string name="profile_edittext_program">Enter Academic Program</string>
+    <string name="profile_edittext_num">Enter Contact Number</string>
+    <string name="profile_edittext_majors">Enter Majors</string>
+    <string name="button_submit">Submit</string>
+    <string name="profile_edittext_name">Enter Diplay Name</string>
     <string name="or">OR</string>
 </resources>
