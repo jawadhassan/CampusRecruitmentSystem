@@ -37,7 +37,9 @@ public class ProfileDataFragment  extends Fragment{
 
                // Intent intent = TeacherProfileActivity.newIntent(getContext());
                // startActivity(intent);
-                Log.d("Check","In Profile DataFragment: Company Selected");
+                Log.d("Check", "In Profile DataFragment: Organization Selected");
+                Intent organizationProfileIntent = OrganizationProfileCreationActivity.NewIntent(getActivity());
+                startActivity(organizationProfileIntent);
             }
         });
 

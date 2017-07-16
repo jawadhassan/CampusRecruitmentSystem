@@ -2,13 +2,11 @@ package com.example.hamid_pc.campusrecruitmentsystem;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 public class AuthenticationActivity extends AppCompatActivity {
 
 
+    private final String ADMIN = "administrator";
+    private final String STUDENT = "student";
+    private final String ORGANIZATION = "organization";
         private boolean signed_in;
         private FirebaseAuth mFireAuth;
         private FirebaseDatabase mFirebaseDatabase;
@@ -32,9 +33,6 @@ public class AuthenticationActivity extends AppCompatActivity {
         private DatabaseReference mUserReference;
         private FirebaseAuth.AuthStateListener mAuthListener;
         private Query query;
-        private final String ADMIN =  "administrator";
-        private final String STUDENT =  "student";
-        private final String COMPANY = "company";
 
         public static Intent newIntent(Context packageContext) {
             Intent intent = new Intent(packageContext, AuthenticationActivity.class);
@@ -93,15 +91,18 @@ public class AuthenticationActivity extends AppCompatActivity {
                                    // startActivity(intent);
                                    Log.d("Check","In Authentication: User is Student");
 
-                                } else if (userData.getmRole().equals(COMPANY)) {
+                                } else if (userData.getmRole().equals(ORGANIZATION)) {
 
-                                   // Intent intent = CourseListStudentPanelActivity.newIntent(AuthenticationActivity.this);
-                                   // startActivity(intent);
-                                    Log.d("Check","In Authentication: User is Company");
-
+                                    Log.d("Check", "In Authentication: User is Organization");
+                                    Intent intent = OrganizationOptionChooserActivity.NewIntent(AuthenticationActivity.this);
+                                    startActivity(intent);
+                                    finish();
 
                                 }else if(userData.getmRole().equals(ADMIN)){
                                     Log.d("Check","In Authentication: User is Admin");
+                                    Intent intent = AdminActivity.NewIntent(AuthenticationActivity.this);
+                                    startActivity(intent);
+                                    finish();
                                 }
                             }
 

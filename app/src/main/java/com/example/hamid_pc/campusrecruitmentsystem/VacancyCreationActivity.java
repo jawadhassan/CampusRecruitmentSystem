@@ -1,24 +1,21 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-
-
-public class StudentListActivity extends SingleFragmentActivity {
-
+public class VacancyCreationActivity extends SingleFragmentActivity {
 
     public static Intent NewIntent(Context packageContext) {
-        Intent intent = new Intent(packageContext, StudentListActivity.class);
-
+        Intent intent = new Intent(packageContext, VacancyCreationActivity.class);
         return intent;
     }
 
     @Override
     protected Fragment createFragment() {
-        return StudentListFragment.NewInstance();
+        return VacancyCreationFragment.NewInstance();
     }
 
     @Override

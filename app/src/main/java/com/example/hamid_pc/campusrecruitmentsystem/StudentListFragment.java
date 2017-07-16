@@ -12,9 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -27,6 +30,7 @@ public class StudentListFragment extends Fragment {
     private FirebaseRecyclerAdapter<Student, StudentViewHolder> mAdapter;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+
 
     public static  StudentListFragment NewInstance(){
         StudentListFragment studentListFragment = new StudentListFragment();
@@ -48,10 +52,10 @@ public class StudentListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_list,container,false);
-        Toast.makeText(getActivity(),"WHy????",Toast.LENGTH_LONG).show();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.student_list_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         UpdateUI();
+
         return view;
     }
 
@@ -85,19 +89,8 @@ public class StudentListFragment extends Fragment {
         TextView StudentText;
         TextView ProgramEnrolled;
         Student mStudent;
+        String mUUID;
 
-
-        @Override
-        public void onClick(View v) {
-            AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
-            if(appCompatActivity instanceof StudentListActivity){
-               StudentListActivity studentListActivity = (StudentListActivity) appCompatActivity;
-               Intent intent = StudentProfileActivity.newIntent(studentListActivity);
-                studentListActivity.startActivity(intent);
-
-            }
-
-        }
 
         public StudentViewHolder(View itemView) {
             super(itemView);
@@ -107,10 +100,23 @@ public class StudentListFragment extends Fragment {
 
         }
 
+        @Override
+        public void onClick(View v) {
+            AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+            if(appCompatActivity instanceof StudentListActivity){
+               StudentListActivity studentListActivity = (StudentListActivity) appCompatActivity;
+                mUUID = this.mStudent.getmUuid();
+                Intent intent = StudentProfileActivity.newIntent(studentListActivity, mUUID);
+                studentListActivity.startActivity(intent);
+
+            }
+
+        }
 
         public void bindView (Student student){
             this.mStudent = student;
         }
     }
+
 
 }

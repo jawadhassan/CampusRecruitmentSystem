@@ -4,49 +4,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:src="@mipmap/ic_user" />
-
-
-     <TextView
-
-         android:id="@+id/student_name"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:textAlignment="center"
-         android:textSize="20sp" />
-
-
     <TextView
-        android:id="@+id/student_contact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:text="contact"
-        android:textAlignment="center"
-        android:textSize="20sp" />
 
-
-    <TextView
-        android:id="@+id/program_enrolled"
+        android:id="@+id/job_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="program enrolled"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+
+
+        />
+
+
+    <TextView
+        android:id="@+id/job_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="detail"
         android:textAlignment="viewStart"
         android:textSize="24sp" />
 
 
     <TextView
-        android:id="@+id/majors"
+        android:id="@+id/position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="position"
+        android:textAlignment="viewStart"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -59,24 +60,13 @@
 
 
     <TextView
-        android:id="@+id/cgpa"
+        android:id="@+id/age_limit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="cgpa"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="email"
-        android:textAlignment="viewStart"
         android:textSize="24sp" />
 
 

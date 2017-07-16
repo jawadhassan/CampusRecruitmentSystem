@@ -1,20 +1,15 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+public class AdminActivity extends SingleFragmentActivity {
 
-
-public class StudentProfileActivity extends SingleFragmentActivity {
-
-
-    public static String sUUID;
-
-    public static Intent newIntent(Context PackageContext, String UUID) {
-        Intent intent = new Intent(PackageContext,StudentProfileActivity.class);
-        sUUID = UUID;
+    public static Intent NewIntent(Context packageContext) {
+        Intent intent = new Intent(packageContext, AdminActivity.class);
         return intent;
     }
 
@@ -25,8 +20,7 @@ public class StudentProfileActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment() {
-        return StudentProfileFragment.NewInstance(sUUID);
+
+        return AdminFragment.NewInstance();
     }
-
-
 }

@@ -11,5 +11,20 @@
     <string name="profile_edittext_majors">Enter Majors</string>
     <string name="button_submit">Submit</string>
     <string name="profile_edittext_name">Enter Diplay Name</string>
+    <string name="profile_edittext_company_name">Enter Organization Name</string>
+    <string name="profile_edittext_company_address">Enter Organization Address</string>
+    <string name="profile_edittext_company_contact">Enter Organization Contact</string>
+    <string name="profile_edittext_company_type">Enter Organization Type</string>
+    <string name="profile_edittext_job_title">Enter Job Title</string>
+    <string name="profile_edittext_job_detail">Enter Job Detail</string>
+    <string name="profile_edittext_postions">Enter Position Available</string>
+    <string name="profile_edittext_area">Enter Area For Job Placement</string>
+    <string name="profile_edittext_age_limit">Age Limit</string>
+    <string name="student_list_picker">Student List</string>
+    <string name="vacancies_posted_list">Vacancies Posted</string>
+    <string name="option_title">Choose Option</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="user_picker_title">Choose User Type</string>
     <string name="or">OR</string>
+    <string name="delete">Delete</string>
 </resources>

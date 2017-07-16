@@ -7,8 +7,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        tools:replace="android:supportsRtl"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:supportsRtl">
 
         <activity android:name=".AuthenticationActivity">
             <intent-filter>
@@ -27,7 +27,19 @@
         </activity>
 
 
-        <activity android:name=".StudentProfileCreationActivity">
+        <activity android:name=".StudentProfileCreationActivity"></activity>
+
+        <activity android:name=".OrganizationProfileCreationActivity"></activity>
+
+        <activity android:name=".OrganizationOptionChooserActivity"></activity>
+
+        <activity android:name=".VacancyCreationActivity"></activity>
+
+        <activity android:name=".VacancyListActivity"></activity>
+
+        <activity android:name=".VacancyDetailActivity"></activity>
+
+        <activity android:name=".AdminActivity">
         </activity>
 
     </application>

@@ -12,6 +12,19 @@ public class Student {
     private String mCgpa;
     private String mUuid;
 
+    public Student() {
+    }
+
+    public Student(String UUID, String Name, String ContactNumber, String Email, String EnrolledProgram, String Majors, String Cgpa) {
+        this.mName = Name;
+        this.mEnrolledProgram = EnrolledProgram;
+        this.mContactNumber = ContactNumber;
+        this.mEmail = Email;
+        this.mCgpa = Cgpa;
+        this.mMajors = Majors;
+        this.mUuid = UUID;
+    }
+
     public String getmUuid() {
         return mUuid;
     }
@@ -46,19 +59,6 @@ public class Student {
 
     public void setmEmail(String mEmail) {
         this.mEmail = mEmail;
-    }
-
-    public Student() {
-    }
-
-    public Student(String UUID,String Name,String ContactNumber, String Email, String EnrolledProgram, String Majors,String Cgpa) {
-        this.mName = Name;
-        this.mEnrolledProgram = mEnrolledProgram;
-        this.mContactNumber = ContactNumber;
-        this.mEmail = Email;
-        this.mCgpa = Cgpa;
-        this.mMajors = Majors;
-        this.mUuid = UUID;
     }
 
     public String getmName() {

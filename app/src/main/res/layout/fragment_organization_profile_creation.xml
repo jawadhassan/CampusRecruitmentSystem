@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="@string/profile_edittext_name"
+            android:hint="@string/profile_edittext_company_name"
             android:inputType="text"
             android:paddingLeft="10dp" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="@string/profile_edittext_num"
+            android:hint="@string/profile_edittext_company_contact"
             android:inputType="text"
             android:paddingLeft="10dp" />
 
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="@string/profile_edittext_program"
+            android:hint="@string/profile_edittext_company_address"
             android:inputType="text"
             android:paddingLeft="10dp" />
 
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="@string/profile_edittext_majors"
+            android:hint="@string/profile_edittext_company_type"
             android:inputType="text"
             android:paddingLeft="10dp" />
 
