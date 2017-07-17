@@ -1,9 +1,11 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -155,6 +157,12 @@ public class OrganizationListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             Log.d("Check", "OrganizationListFragment: OrganizationListFragment ListItem Clicked");
+            AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
+            if (appCompatActivity instanceof OrganizationListActivity) {
+                OrganizationListActivity organizationListActivity = (OrganizationListActivity) appCompatActivity;
+                Intent intent = OrganizationDetailActivity.NewIntent(organizationListActivity, mOrganization.getmUUID(), mOrganization.getmOrganizationName(), mOrganization.getmOrganizationAddress(), mOrganization.getmOrganizationContact(), mOrganization.getmEmail(), mOrganization.getmOrganizationType());
+                organizationListActivity.startActivity(intent);
+            }
 
         }
     }
