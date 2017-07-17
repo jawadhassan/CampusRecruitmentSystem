@@ -3,7 +3,6 @@ package com.example.hamid_pc.campusrecruitmentsystem;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +25,7 @@ public class VacancyDetailFragment extends Fragment {
     TextView mAgeView;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+    private DatabaseReference mVacaniesPostedReference;
     private Vacancy vacancy;
 
     public static VacancyDetailFragment NewInstance(String PushID) {
@@ -41,7 +41,7 @@ public class VacancyDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("vacancies");
-
+        mVacaniesPostedReference = mFirebaseDatabase.getReference("vacanciesposted");
     }
 
     @Nullable
@@ -92,4 +92,5 @@ public class VacancyDetailFragment extends Fragment {
 
         return view;
     }
+
 }

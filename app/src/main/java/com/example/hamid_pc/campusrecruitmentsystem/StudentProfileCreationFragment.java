@@ -1,6 +1,7 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,6 @@ import android.widget.EditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.StorageReference;
 
 public class StudentProfileCreationFragment extends Fragment {
 
@@ -93,8 +93,8 @@ public class StudentProfileCreationFragment extends Fragment {
 
                 Log.d("Check","Student Profile Creation");
 
-               // Intent intent = CourseListStudentPanelActivity.newIntent(getActivity());
-               // startActivity(intent);
+                Intent intent = VacancyListActivity.NewIntent(getActivity());
+                startActivity(intent);
             }
         });
         return view;

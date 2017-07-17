@@ -47,6 +47,9 @@ public class AdminFragment extends Fragment {
         mCompanyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = OrganizationListActivity.NewIntent(getActivity());
+                startActivity(intent);
+
 
             }
         });

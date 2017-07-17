@@ -10,6 +10,9 @@ public class Organization {
     private String mUUID;
     private String mEmail;
 
+    public Organization() {
+    }
+
     public Organization(String UUID, String OrganizationName, String OrganizationAddress, String OrganizationContact, String Email, String OrganizationType) {
         this.mOrganizationName = OrganizationName;
         this.mOrganizationAddress = OrganizationAddress;
