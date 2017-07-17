@@ -6,9 +6,19 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class OrganizationDetailFragment extends Fragment {
 
@@ -18,14 +28,16 @@ public class OrganizationDetailFragment extends Fragment {
     private static String sOrganizationEmail;
     private static String sOrganizationType;
     private static String sOrganizationUUID;
-
-
+    private final String ADMIN = "administrator";
+    private String mUUID;
     private TextView mOrganizationName;
     private TextView mOrganizationContact;
     private TextView mOrganizationAddress;
     private TextView mOrganizationEmail;
     private TextView mOrganizationType;
-
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    private DatabaseReference mAdminReference;
 
     public static OrganizationDetailFragment NewInstance(String OrganizationUUID, String OrganizationName, String OrganizationAddress, String OrganizationContact, String OrganizationEmail, String OrganizationType) {
         OrganizationDetailFragment organizationDetailFragment = new OrganizationDetailFragment();
@@ -43,6 +55,10 @@ public class OrganizationDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Log.d("Check", "In Organization Detail Fragment");
 
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference("organizations");
+        mAdminReference = mFirebaseDatabase.getReference("users");
+        mUUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     }
 
@@ -63,7 +79,100 @@ public class OrganizationDetailFragment extends Fragment {
         mOrganizationEmail.setText(sOrganizationEmail);
         mOrganizationType.setText(sOrganizationType);
 
+        EnableDeleteMenu();
+
         return view;
+
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.miDelete:
+                Log.d("Check", "Organization Detail Activity: Deleted Menu Item Selected");
+//                mStudentRef.removeValue();
+//                mUserRef.removeValue();
+//                getActivity().finish();
+
+
+        }
+
+
+        return true;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuInflater inflater1 = getActivity().getMenuInflater();
+        inflater1.inflate(R.menu.delete_menu, menu);
+    }
+
+
+    public void DeleteOrganization() {
+        mDatabaseReference.orderByChild("mUUID").equalTo(sOrganizationUUID).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Organization organization = dataSnapshot.getValue(Organization.class);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    public void EnableDeleteMenu() {
+
+        mAdminReference.orderByChild("mUUID").equalTo(mUUID).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user.getmRole().compareToIgnoreCase(ADMIN) == 0) {
+                    setHasOptionsMenu(true);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }

@@ -7,7 +7,7 @@ public class Vacancy {
     private String mArea;
     private String mPosition;
     private String mAgeLimit;
-    private String mUUID;
+    private String mOrganizationID;
 
 
     public Vacancy() {
@@ -19,7 +19,7 @@ public class Vacancy {
         this.mArea = mArea;
         this.mPosition = mPosition;
         this.mAgeLimit = mAgeLimit;
-        this.mUUID = UUID;
+        this.mOrganizationID = UUID;
     }
 
     public String getmTitle() {
@@ -62,11 +62,11 @@ public class Vacancy {
         this.mAgeLimit = mAgeLimit;
     }
 
-    public String getmUUID() {
-        return mUUID;
+    public String getmOrganizationID() {
+        return mOrganizationID;
     }
 
-    public void setmUUID(String mUUID) {
-        this.mUUID = mUUID;
+    public void setmOrganizationID(String mOrganizationID) {
+        this.mOrganizationID = mOrganizationID;
     }
 }

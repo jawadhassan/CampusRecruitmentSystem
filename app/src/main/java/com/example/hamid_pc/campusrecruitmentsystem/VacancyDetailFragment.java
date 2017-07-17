@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class VacancyDetailFragment extends Fragment {
 
-    private static String sRandomUuid;
+    private static String sOrganizationID;
     TextView mTitleView;
     TextView mDetailView;
     TextView mPositionView;
@@ -25,11 +25,10 @@ public class VacancyDetailFragment extends Fragment {
     TextView mAgeView;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    private DatabaseReference mVacaniesPostedReference;
     private Vacancy vacancy;
 
-    public static VacancyDetailFragment NewInstance(String PushID) {
-        sRandomUuid = PushID;
+    public static VacancyDetailFragment NewInstance(String OrganizationID) {
+        sOrganizationID = OrganizationID;
 
         VacancyDetailFragment vacancyDetailFragment = new VacancyDetailFragment();
         return vacancyDetailFragment;
@@ -41,7 +40,7 @@ public class VacancyDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("vacancies");
-        mVacaniesPostedReference = mFirebaseDatabase.getReference("vacanciesposted");
+
     }
 
     @Nullable
@@ -54,7 +53,7 @@ public class VacancyDetailFragment extends Fragment {
         mAreaView = (TextView) view.findViewById(R.id.area);
         mAgeView = (TextView) view.findViewById(R.id.age_limit);
 
-        mDatabaseReference.orderByChild("mUUID").equalTo(sRandomUuid).addChildEventListener(new ChildEventListener() {
+        mDatabaseReference.orderByChild("mOrganizationID").equalTo(sOrganizationID).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 vacancy = dataSnapshot.getValue(Vacancy.class);

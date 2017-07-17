@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +39,8 @@ public class VacancyListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference("vacanciesposted/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+//        mDatabaseReference = mFirebaseDatabase.getReference("vacanciesposted/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        mDatabaseReference = mFirebaseDatabase.getReference("vacancies");
     }
 
     @Nullable
@@ -63,18 +63,19 @@ public class VacancyListFragment extends Fragment {
     }
 
     public void UpdateUI() {
-        mAdapter = new FirebaseRecyclerAdapter<VacancyPosted, VacancyViewHolder>(
-                VacancyPosted.class,
+        mAdapter = new FirebaseRecyclerAdapter<Vacancy, VacancyViewHolder>(
+                Vacancy.class,
                 R.layout.list_vacancy,
                 VacancyViewHolder.class,
-                mDatabaseReference
+                mDatabaseReference.orderByChild("mOrganizationID").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+
 
         ) {
             @Override
-            protected void populateViewHolder(VacancyViewHolder vacancyViewHolder, VacancyPosted model, int position) {
+            protected void populateViewHolder(VacancyViewHolder vacancyViewHolder, Vacancy model, int position) {
 
                 vacancyViewHolder.vacancyTextView.setText(model.getmTitle());
-                VacancyPosted vacancyPosted = getItem(position);
+                Vacancy vacancyPosted = getItem(position);
                 vacancyViewHolder.bindCourse(vacancyPosted);
             }
         };
@@ -86,7 +87,7 @@ public class VacancyListFragment extends Fragment {
 
     public static class VacancyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView vacancyTextView;
-        VacancyPosted mVacancyPosted;
+        Vacancy mVacancyPosted;
 
 
         public VacancyViewHolder(View itemView) {
@@ -96,18 +97,18 @@ public class VacancyListFragment extends Fragment {
 
         }
 
-        public void bindCourse(VacancyPosted vacancyPosted) {
+        public void bindCourse(Vacancy vacancyPosted) {
             mVacancyPosted = vacancyPosted;
         }
 
         @Override
         public void onClick(View v) {
-            Log.d("Check", "In Vacancy List:" + mVacancyPosted.getmRandomID());
+            Log.d("Check", "In Vacancy List:" + mVacancyPosted.getmOrganizationID());
 
             AppCompatActivity appCompatActivity = (AppCompatActivity) v.getContext();
             if (appCompatActivity instanceof VacancyListActivity) {
                 VacancyListActivity vacancyListActivity = (VacancyListActivity) appCompatActivity;
-                Intent intent = VacancyDetailActivity.NewIntent(vacancyListActivity, mVacancyPosted.getmRandomID());
+                Intent intent = VacancyDetailActivity.NewIntent(vacancyListActivity, mVacancyPosted.getmOrganizationID());
                 vacancyListActivity.startActivity(intent);
 
             }

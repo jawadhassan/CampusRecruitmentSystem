@@ -4,7 +4,6 @@ package com.example.hamid_pc.campusrecruitmentsystem;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,6 @@ import android.widget.EditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.UUID;
 
 public class VacancyCreationFragment extends Fragment {
 
@@ -34,16 +31,15 @@ public class VacancyCreationFragment extends Fragment {
     private String mUuid;
     private String mPushKey;
 
-    private VacancyPosted vacancyPosted;
+
 
     private Button mSubmit;
 
     private Vacancy mVacancy;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    private DatabaseReference mVacancyPostedReference;
 
-    private String mRandomId;
+
 
 
     public static VacancyCreationFragment NewInstance() {
@@ -56,7 +52,8 @@ public class VacancyCreationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("vacancies");
-        mRandomId = UUID.randomUUID().toString();
+
+
     }
 
     @Nullable
@@ -81,15 +78,11 @@ public class VacancyCreationFragment extends Fragment {
                 mAgeLimit = mAge.getText().toString();
                 mUuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                mVacancyPostedReference = mFirebaseDatabase.getReference("vacanciesposted/" + mUuid);
 
-
-                vacancyPosted = new VacancyPosted(mRandomId, mTitle);
-                mVacancy = new Vacancy(mRandomId, mTitle, mDetail, mPlacementArea, mPositionNumber, mAgeLimit);
+                mVacancy = new Vacancy(mUuid, mTitle, mDetail, mPlacementArea, mPositionNumber, mAgeLimit);
 
 
                 mDatabaseReference.push().setValue(mVacancy);
-                mVacancyPostedReference.push().setValue(vacancyPosted);
 
 
                 // Intent intent = CourseListStudentPanelActivity.newIntent(getActivity());
