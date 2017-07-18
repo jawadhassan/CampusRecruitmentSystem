@@ -3,6 +3,7 @@ package com.example.hamid_pc.campusrecruitmentsystem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -16,19 +17,27 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class VacancyListFragment extends Fragment {
 
 
+    private final String ADMIN = "administrator";
+    CoordinatorLayout.LayoutParams p;
     private RecyclerView mRecyclerView;
     private FirebaseRecyclerAdapter mAdapter;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
+    private DatabaseReference mAdminReference;
     private FloatingActionButton mFAB;
-
+    private Query mQuery;
+    private String mUUID;
 
     //TODO: Resolve the issue, if user is student then list of all vacancies will be available
 
@@ -43,6 +52,8 @@ public class VacancyListFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 //        mDatabaseReference = mFirebaseDatabase.getReference("vacanciesposted/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
         mDatabaseReference = mFirebaseDatabase.getReference("vacancies");
+        mUUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     }
 
     @Nullable
@@ -52,7 +63,15 @@ public class VacancyListFragment extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.vacancy_list_recycler_view);
         mFAB = (FloatingActionButton) view.findViewById(R.id.vacancy_floating_button);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        UpdateUI();
+        p = (CoordinatorLayout.LayoutParams) mFAB.getLayoutParams();
+        Check();
+
+
+        p.setBehavior(null); //should disable default animations
+        p.setAnchorId(View.NO_ID); //should let you set visibility
+        mFAB.setLayoutParams(p);
+        mFAB.setVisibility(View.GONE);
+
         mFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,25 +83,93 @@ public class VacancyListFragment extends Fragment {
         return view;
     }
 
-    public void UpdateUI() {
+    public void UpdateUI(Query query) {
+//        mAdapter = new FirebaseRecyclerAdapter<Vacancy, VacancyViewHolder>(
+//                Vacancy.class,
+//                R.layout.list_vacancy,
+//                VacancyViewHolder.class,
+//                mDatabaseReference.orderByChild("mOrganizationID").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//
+//
+//        ) {
+//            @Override
+//            protected void populateViewHolder(VacancyViewHolder vacancyViewHolder, Vacancy model, int position) {
+//
+//                vacancyViewHolder.vacancyTextView.setText(model.getmTitle());
+//                Vacancy vacancyPosted = getItem(position);
+//                vacancyViewHolder.bindCourse(vacancyPosted);
+//            }
+//        };
+
+        mQuery = query;
+
         mAdapter = new FirebaseRecyclerAdapter<Vacancy, VacancyViewHolder>(
                 Vacancy.class,
                 R.layout.list_vacancy,
                 VacancyViewHolder.class,
-                mDatabaseReference.orderByChild("mOrganizationID").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid())
-
-
+                mQuery
         ) {
             @Override
-            protected void populateViewHolder(VacancyViewHolder vacancyViewHolder, Vacancy model, int position) {
-
-                vacancyViewHolder.vacancyTextView.setText(model.getmTitle());
+            protected void populateViewHolder(VacancyViewHolder viewHolder, Vacancy model, int position) {
+                viewHolder.vacancyTextView.setText(model.getmTitle());
                 Vacancy vacancyPosted = getItem(position);
-                vacancyViewHolder.bindCourse(vacancyPosted);
+                viewHolder.bindCourse(vacancyPosted);
             }
         };
 
+        //to bring things back to normal state
+
+        p.setBehavior(new FloatingActionButton.Behavior());
+        p.setAnchorId(R.id.vacancy_list_recycler_view);
+        mFAB.setLayoutParams(p);
+
         mRecyclerView.setAdapter(mAdapter);
+
+    }
+
+
+    public void Check() {
+
+        mAdminReference.orderByChild("mUUID").equalTo(mUUID).addChildEventListener(new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                User user = dataSnapshot.getValue(User.class);
+                if (user.getmRole().compareToIgnoreCase(ADMIN) == 0) {
+                    mQuery = mDatabaseReference.orderByChild("mOrganizationID").equalTo(mUUID);
+                    UpdateUI(mQuery);
+                } else {
+                    mQuery = mDatabaseReference;
+                    UpdateUI(mQuery);
+                }
+
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+
+        });
+
 
     }
 

@@ -13,6 +13,7 @@ public class VacancyListActivity extends SingleFragmentActivity {
 
     public static Intent NewIntent(Context packageContext) {
         Intent intent = new Intent(packageContext, VacancyListActivity.class);
+
         return intent;
     }
 
