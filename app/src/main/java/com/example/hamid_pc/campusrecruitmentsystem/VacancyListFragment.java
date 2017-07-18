@@ -30,6 +30,8 @@ public class VacancyListFragment extends Fragment {
     private FloatingActionButton mFAB;
 
 
+    //TODO: Resolve the issue, if user is student then list of all vacancies will be available
+
     public static VacancyListFragment NewInstance() {
         VacancyListFragment vacancyListFragment = new VacancyListFragment();
         return vacancyListFragment;

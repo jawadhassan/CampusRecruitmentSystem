@@ -35,9 +35,13 @@ public class OrganizationDetailFragment extends Fragment {
     private TextView mOrganizationAddress;
     private TextView mOrganizationEmail;
     private TextView mOrganizationType;
+
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private DatabaseReference mAdminReference;
+
+
+    //TODO: Fix issue the vacancy record remains even after record of Organization is deleted
 
     public static OrganizationDetailFragment NewInstance(String OrganizationUUID, String OrganizationName, String OrganizationAddress, String OrganizationContact, String OrganizationEmail, String OrganizationType) {
         OrganizationDetailFragment organizationDetailFragment = new OrganizationDetailFragment();
@@ -96,6 +100,8 @@ public class OrganizationDetailFragment extends Fragment {
 //                mStudentRef.removeValue();
 //                mUserRef.removeValue();
 //                getActivity().finish();
+                DeleteOrganization();
+                getActivity().finish();
 
 
         }
@@ -117,7 +123,35 @@ public class OrganizationDetailFragment extends Fragment {
         mDatabaseReference.orderByChild("mUUID").equalTo(sOrganizationUUID).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Organization organization = dataSnapshot.getValue(Organization.class);
+
+                dataSnapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mAdminReference.orderByChild("mUUID").equalTo(sOrganizationUUID).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                dataSnapshot.getRef().removeValue();
             }
 
             @Override
