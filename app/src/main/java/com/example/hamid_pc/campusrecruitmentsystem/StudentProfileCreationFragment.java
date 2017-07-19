@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,19 +81,13 @@ public class StudentProfileCreationFragment extends Fragment {
                 mCGPA = mEditTextCGPA.getText().toString();
                 mUuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 mEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-
-
                 mStudent = new Student(mUuid, mName,mContactNum,mEmail,mAcademicProgram,mMajors,mCGPA);
                 mDatabaseReference.push().setValue(mStudent);
-
-
                 mUser = new User(mUuid,"student");
                 mDatabaseUserReference.push().setValue(mUser);
-
-                Log.d("Check","Student Profile Creation");
-
-                Intent intent = VacancyListActivity.NewIntent(getActivity());
+                Intent intent = StudentVacancyListActivity.NewIntent(getActivity());
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         return view;

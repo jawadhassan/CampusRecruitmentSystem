@@ -44,8 +44,6 @@ public class OrganizationListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_organization_list, container, false);
-        Log.d("Check", "In Organization List Fragment:");
-
         mRecyclerView = (RecyclerView) view.findViewById(R.id.organization_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         UpdateUI();

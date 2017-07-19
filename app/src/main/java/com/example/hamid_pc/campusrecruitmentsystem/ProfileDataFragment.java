@@ -40,6 +40,7 @@ public class ProfileDataFragment  extends Fragment{
                 Log.d("Check", "In Profile DataFragment: Organization Selected");
                 Intent organizationProfileIntent = OrganizationProfileCreationActivity.NewIntent(getActivity());
                 startActivity(organizationProfileIntent);
+                getActivity().finish();
             }
         });
 
@@ -51,6 +52,7 @@ public class ProfileDataFragment  extends Fragment{
                 Log.d("Check","In Profile DataFragment: Student Selected");
                 Intent studentProfileIntent = StudentProfileCreationActivity.NewIntent(getActivity());
                 startActivity(studentProfileIntent);
+                getActivity().finish();
 
             }
         });

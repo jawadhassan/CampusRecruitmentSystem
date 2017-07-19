@@ -83,6 +83,7 @@ public class VacancyCreationFragment extends Fragment {
 
 
                 mDatabaseReference.push().setValue(mVacancy);
+                getActivity().finish();
 
 
                 // Intent intent = CourseListStudentPanelActivity.newIntent(getActivity());

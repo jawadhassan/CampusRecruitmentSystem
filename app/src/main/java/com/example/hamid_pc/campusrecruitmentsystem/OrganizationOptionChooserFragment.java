@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,12 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.support.v4.app.Fragment;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class OrganizationOptionChooserFragment extends Fragment {
 
@@ -30,10 +29,7 @@ public class OrganizationOptionChooserFragment extends Fragment {
         return OP;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
 
     @Nullable
     @Override
@@ -77,7 +73,8 @@ public class OrganizationOptionChooserFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            AuthenticationActivity.newIntent(getActivity());
+                            Intent intent = AuthenticationActivity.newIntent(getActivity());
+                            startActivity(intent);
                             getActivity().finish();
                         }
                     }

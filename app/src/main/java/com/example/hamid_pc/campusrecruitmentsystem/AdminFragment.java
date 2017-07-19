@@ -80,7 +80,8 @@ public class AdminFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            AuthenticationActivity.newIntent(getActivity());
+                            Intent intent = AuthenticationActivity.newIntent(getActivity());
+                            startActivity(intent);
                             getActivity().finish();
                         }
                     }

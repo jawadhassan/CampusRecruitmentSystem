@@ -1,19 +1,17 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
-/**
- * Created by Hamid-PC on 7/18/2017.
- */
+
 
 public class JobApplicant {
     String mUUID;
+    String mName;
 
-    public JobApplicant() {
-
+    public JobApplicant(String mUUID, String mName) {
+        this.mUUID = mUUID;
+        this.mName = mName;
     }
 
-    public JobApplicant(String mUUID) {
-
-        this.mUUID = mUUID;
+    public JobApplicant() {
     }
 
     public String getmUUID() {
@@ -22,5 +20,13 @@ public class JobApplicant {
 
     public void setmUUID(String mUUID) {
         this.mUUID = mUUID;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
     }
 }

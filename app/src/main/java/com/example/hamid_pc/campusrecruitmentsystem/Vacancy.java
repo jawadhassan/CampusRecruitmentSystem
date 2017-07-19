@@ -1,6 +1,8 @@
 package com.example.hamid_pc.campusrecruitmentsystem;
 
 
+import java.util.UUID;
+
 public class Vacancy {
     private String mTitle;
     private String mDetail;
@@ -8,18 +10,20 @@ public class Vacancy {
     private String mPosition;
     private String mAgeLimit;
     private String mOrganizationID;
+    private String mVacancyID;
 
 
     public Vacancy() {
     }
 
-    public Vacancy(String UUID, String mTitle, String mDetail, String mArea, String mPosition, String mAgeLimit) {
+    public Vacancy(String OrganizationID, String mTitle, String mDetail, String mArea, String mPosition, String mAgeLimit) {
         this.mTitle = mTitle;
         this.mDetail = mDetail;
         this.mArea = mArea;
         this.mPosition = mPosition;
         this.mAgeLimit = mAgeLimit;
-        this.mOrganizationID = UUID;
+        this.mOrganizationID = OrganizationID;
+        this.mVacancyID = UUID.randomUUID().toString();
     }
 
     public String getmTitle() {
@@ -68,5 +72,13 @@ public class Vacancy {
 
     public void setmOrganizationID(String mOrganizationID) {
         this.mOrganizationID = mOrganizationID;
+    }
+
+    public String getmVacancyID() {
+        return mVacancyID;
+    }
+
+    public void setmVacancyID(String mVacancyID) {
+        this.mVacancyID = mVacancyID;
     }
 }

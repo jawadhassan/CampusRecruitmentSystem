@@ -90,6 +90,10 @@ public class AuthenticationActivity extends AppCompatActivity {
                                    // Intent intent = CourseListActivity.newIntent(AuthenticationActivity.this);
                                    // startActivity(intent);
                                    Log.d("Check","In Authentication: User is Student");
+                                    Intent intent = StudentVacancyListActivity.NewIntent(AuthenticationActivity.this);
+                                    startActivity(intent);
+                                    finish();
+
 
                                 } else if (userData.getmRole().equals(ORGANIZATION)) {
 
@@ -151,6 +155,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                     if (!dataSnapshot.exists()) {
                         Intent intent = ProfileDataActivity.newIntent(AuthenticationActivity.this);
                         startActivity(intent);
+                        finish();
 
                     }
                 }

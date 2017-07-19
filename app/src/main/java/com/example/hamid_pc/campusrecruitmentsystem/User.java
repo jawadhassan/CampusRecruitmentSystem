@@ -17,6 +17,9 @@ public class User {
         return mUUID;
     }
 
+    public void setmUUID(String mUUID) {
+        this.mUUID = mUUID;
+    }
 
     public String getmRole() {
         return mRole;

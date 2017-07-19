@@ -4,7 +4,6 @@ package com.example.hamid_pc.campusrecruitmentsystem;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,6 +38,7 @@ public class OrganizationDetailFragment extends Fragment {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private DatabaseReference mAdminReference;
+    private DatabaseReference mVacancyReference;
 
 
     //TODO: Fix issue the vacancy record remains even after record of Organization is deleted
@@ -57,11 +57,10 @@ public class OrganizationDetailFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("Check", "In Organization Detail Fragment");
-
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference("organizations");
         mAdminReference = mFirebaseDatabase.getReference("users");
+        mVacancyReference = mFirebaseDatabase.getReference("vacancies");
         mUUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     }
@@ -96,10 +95,6 @@ public class OrganizationDetailFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.miDelete:
-                Log.d("Check", "Organization Detail Activity: Deleted Menu Item Selected");
-//                mStudentRef.removeValue();
-//                mUserRef.removeValue();
-//                getActivity().finish();
                 DeleteOrganization();
                 getActivity().finish();
 
@@ -149,6 +144,33 @@ public class OrganizationDetailFragment extends Fragment {
         });
 
         mAdminReference.orderByChild("mUUID").equalTo(sOrganizationUUID).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                dataSnapshot.getRef().removeValue();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mVacancyReference.orderByChild("mOrganizationID").equalTo(sOrganizationUUID).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 dataSnapshot.getRef().removeValue();

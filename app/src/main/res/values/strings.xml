@@ -27,5 +27,8 @@
     <string name="user_picker_title">Choose User Type</string>
     <string name="or">OR</string>
     <string name="delete">Delete</string>
-    <string name="company_name">Company Name</string>
+    <string name="organization_name">Organization Name</string>
+    <string name="add_organization">Add</string>
+    <string name="button_apply">Apply</string>
+    <string name="button_applicants">Applicants</string>
 </resources>

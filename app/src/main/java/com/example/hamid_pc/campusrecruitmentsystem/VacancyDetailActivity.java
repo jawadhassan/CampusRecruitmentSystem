@@ -13,18 +13,20 @@ import android.util.Log;
 public class VacancyDetailActivity extends SingleFragmentActivity {
 
     private static String sOrganizationID;
+    private static String sVacancyID;
 
 
-    public static Intent NewIntent(Context packageContext, String OrganizationID) {
+    public static Intent NewIntent(Context packageContext, String OrganizationID, String VacancyID) {
         Intent intent = new Intent(packageContext, VacancyDetailActivity.class);
         sOrganizationID = OrganizationID;
+        sVacancyID = VacancyID;
         return intent;
     }
 
     @Override
     protected Fragment createFragment() {
         Log.d("Check", "In Detail Activity " + sOrganizationID);
-        return VacancyDetailFragment.NewInstance(sOrganizationID);
+        return VacancyDetailFragment.NewInstance(sOrganizationID, sVacancyID);
     }
 
     @Override
