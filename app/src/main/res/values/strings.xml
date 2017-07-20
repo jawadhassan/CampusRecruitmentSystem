@@ -31,4 +31,24 @@
     <string name="add_organization">Add</string>
     <string name="button_apply">Apply</string>
     <string name="button_applicants">Applicants</string>
+    <string name="bio_data">Bio Data</string>
+    <string name="program_enrolled">Program Enrolled</string>
+    <string name="majors">Majors</string>
+    <string name="cgpa">CGPA</string>
+    <string name="email">Email</string>
+    <string name="job_title">Job Title</string>
+    <string name="job_detail">Job Detail</string>
+    <string name="job_area">Area</string>
+    <string name="job_agelimit">Age Limit</string>
+    <string name="job_position">Position</string>
+    <string name="organization_title">Organization Name</string>
+    <string name="organization_conatact">Organization Contact</string>
+    <string name="organization_email">Organization Email</string>
+    <string name="organization_address">Organization Address</string>
+    <string name="organization_type">Organization Category</string>
+    <string name="vacancy_title">Vacancy Details</string>
+    <string name="organization_title_tag">Organization Details</string>
+    <string name="student_biodata">Student Bio-Data</string>
+
+
 </resources>

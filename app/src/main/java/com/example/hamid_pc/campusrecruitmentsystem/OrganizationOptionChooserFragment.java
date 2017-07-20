@@ -66,7 +66,7 @@ public class OrganizationOptionChooserFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //TODO: Fix the behavior: Application minimizes when task gets successful, The expected behavior is starting authentication activity
+
         switch (item.getItemId()) {
             case R.id.miProfile:
                 AuthUI.getInstance().signOut(getActivity()).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -75,7 +75,7 @@ public class OrganizationOptionChooserFragment extends Fragment {
                         if (task.isSuccessful()) {
                             Intent intent = AuthenticationActivity.newIntent(getActivity());
                             startActivity(intent);
-                            getActivity().finish();
+
                         }
                     }
                 });

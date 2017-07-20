@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +36,10 @@ public class ProfileDataFragment  extends Fragment{
 
                // Intent intent = TeacherProfileActivity.newIntent(getContext());
                // startActivity(intent);
-                Log.d("Check", "In Profile DataFragment: Organization Selected");
+
                 Intent organizationProfileIntent = OrganizationProfileCreationActivity.NewIntent(getActivity());
                 startActivity(organizationProfileIntent);
-                getActivity().finish();
+
             }
         });
 
@@ -49,10 +48,9 @@ public class ProfileDataFragment  extends Fragment{
             public void onClick(View v) {
                 //Intent intent = StudentProfileActivity.newIntent(getContext());
                 //startActivity(intent);
-                Log.d("Check","In Profile DataFragment: Student Selected");
+
                 Intent studentProfileIntent = StudentProfileCreationActivity.NewIntent(getActivity());
                 startActivity(studentProfileIntent);
-                getActivity().finish();
 
             }
         });

@@ -26,8 +26,16 @@ public class Organization {
         return mEmail;
     }
 
+    public void setmEmail(String mEmail) {
+        this.mEmail = mEmail;
+    }
+
     public String getmUUID() {
         return mUUID;
+    }
+
+    public void setmUUID(String mUUID) {
+        this.mUUID = mUUID;
     }
 
     public String getmOrganizationName() {

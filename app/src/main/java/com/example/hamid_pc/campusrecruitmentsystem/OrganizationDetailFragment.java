@@ -96,7 +96,6 @@ public class OrganizationDetailFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.miDelete:
                 DeleteOrganization();
-                getActivity().finish();
 
 
         }

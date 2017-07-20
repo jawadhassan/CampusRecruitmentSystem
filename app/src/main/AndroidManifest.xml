@@ -17,19 +17,27 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".StudentListActivity">
+        <activity
+            android:name=".StudentListActivity"
+            android:noHistory="true">
         </activity>
 
         <activity android:name=".StudentProfileActivity">
         </activity>
 
-        <activity android:name=".ProfileDataActivity">
+        <activity
+            android:name=".ProfileDataActivity"
+            android:noHistory="true">
         </activity>
 
 
-        <activity android:name=".StudentProfileCreationActivity"></activity>
+        <activity
+            android:name=".StudentProfileCreationActivity"
+            android:noHistory="true"></activity>
 
-        <activity android:name=".OrganizationProfileCreationActivity"></activity>
+        <activity
+            android:name=".OrganizationProfileCreationActivity"
+            android:noHistory="true"></activity>
 
         <activity android:name=".OrganizationOptionChooserActivity"></activity>
 
@@ -48,7 +56,9 @@
 
         <activity android:name=".ApplicantListActivity"></activity>
 
-        <activity android:name=".StudentVacancyListActivity"></activity>
+        <activity
+            android:name=".StudentVacancyListActivity"
+            android:noHistory="true"></activity>
     </application>
 
 </manifest>

@@ -26,7 +26,7 @@ public class StudentListFragment extends Fragment {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
 
-    //TODO: Make Signout work in Student Panel
+
     public static  StudentListFragment NewInstance(){
         StudentListFragment studentListFragment = new StudentListFragment();
         return studentListFragment;

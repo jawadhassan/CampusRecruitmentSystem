@@ -6,6 +6,26 @@
 
     <TextView
 
+        android:id="@+id/student_biodata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/organization_title_tag"
+        android:textAlignment="center"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="20sp" />
+
+    <TextView
+
+        android:id="@+id/organization_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/organization_title"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="12sp" />
+
+    <TextView
+
         android:id="@+id/organization_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,10 +34,20 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textAlignment="viewStart"
-        android:textSize="24sp"
+        android:textSize="18sp"
 
 
         />
+
+    <TextView
+
+        android:id="@+id/organization_address_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/organization_address"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="12sp" />
 
 
     <TextView
@@ -30,7 +60,17 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="detail"
         android:textAlignment="viewStart"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
+
+    <TextView
+
+        android:id="@+id/organization_contact_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/organization_conatact"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="12sp" />
 
 
     <TextView
@@ -43,7 +83,17 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="position"
         android:textAlignment="viewStart"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
+
+    <TextView
+
+        android:id="@+id/organization_email_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/organization_email"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="12sp" />
 
 
     <TextView
@@ -56,7 +106,18 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="certificate"
         android:textAlignment="viewStart"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
+
+
+    <TextView
+
+        android:id="@+id/organization_type_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:text="@string/organization_type"
+        android:textColor="@color/tw__composer_black"
+        android:textSize="12sp" />
 
 
     <TextView
@@ -67,7 +128,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="cgpa"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
 
 </LinearLayout>

@@ -89,24 +89,23 @@ public class AuthenticationActivity extends AppCompatActivity {
                                 if (userData.getmRole().equals(STUDENT)) {
                                    // Intent intent = CourseListActivity.newIntent(AuthenticationActivity.this);
                                    // startActivity(intent);
-                                   Log.d("Check","In Authentication: User is Student");
+
                                     Intent intent = StudentVacancyListActivity.NewIntent(AuthenticationActivity.this);
                                     startActivity(intent);
-                                    finish();
 
 
                                 } else if (userData.getmRole().equals(ORGANIZATION)) {
 
-                                    Log.d("Check", "In Authentication: User is Organization");
+
                                     Intent intent = OrganizationOptionChooserActivity.NewIntent(AuthenticationActivity.this);
                                     startActivity(intent);
-                                    finish();
+
 
                                 }else if(userData.getmRole().equals(ADMIN)){
-                                    Log.d("Check","In Authentication: User is Admin");
+
                                     Intent intent = AdminActivity.NewIntent(AuthenticationActivity.this);
                                     startActivity(intent);
-                                    finish();
+
                                 }
                             }
 
@@ -155,7 +154,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                     if (!dataSnapshot.exists()) {
                         Intent intent = ProfileDataActivity.newIntent(AuthenticationActivity.this);
                         startActivity(intent);
-                        finish();
+
 
                     }
                 }

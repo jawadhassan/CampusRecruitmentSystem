@@ -87,7 +87,7 @@ public class StudentProfileCreationFragment extends Fragment {
                 mDatabaseUserReference.push().setValue(mUser);
                 Intent intent = StudentVacancyListActivity.NewIntent(getActivity());
                 startActivity(intent);
-                getActivity().finish();
+
             }
         });
         return view;

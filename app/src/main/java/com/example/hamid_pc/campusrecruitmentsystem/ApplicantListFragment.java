@@ -56,7 +56,7 @@ public class ApplicantListFragment extends Fragment {
     public void UpdateUI() {
         mAdapter = new FirebaseRecyclerAdapter<JobApplicant, JobViewHolder>(
                 JobApplicant.class,
-                R.layout.list_student,
+                R.layout.list_applicant,
                 JobViewHolder.class,
                 mDatabaseReference
         ) {
@@ -65,6 +65,7 @@ public class ApplicantListFragment extends Fragment {
             protected void populateViewHolder(JobViewHolder viewHolder, JobApplicant model, int position) {
 
                 viewHolder.StudentText.setText(model.getmName());
+
                 JobApplicant jobApplicant = getItem(position);
                 viewHolder.bindView(jobApplicant);
             }
@@ -79,13 +80,11 @@ public class ApplicantListFragment extends Fragment {
 
         JobApplicant mJobApplicant;
         TextView StudentText;
-        TextView ProgramEnrolled;
 
         public JobViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             StudentText = (TextView) itemView.findViewById(R.id.list_item_student_name);
-            ProgramEnrolled = (TextView) itemView.findViewById(R.id.program_enrolled);
         }
 
         @Override

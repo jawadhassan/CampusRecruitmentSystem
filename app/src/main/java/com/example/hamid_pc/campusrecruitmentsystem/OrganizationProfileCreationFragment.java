@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,10 +82,10 @@ public class OrganizationProfileCreationFragment extends Fragment {
                 mUser = new User(mUuid, "organization");
                 mDatabaseUserReference.push().setValue(mUser);
 
-                Intent intent = StudentListActivity.NewIntent(getActivity());
+                Intent intent = OrganizationOptionChooserActivity.NewIntent(getActivity());
                 startActivity(intent);
 
-                Log.d("Check", "Organization Profile Creation");
+
             }
         });
         return view;

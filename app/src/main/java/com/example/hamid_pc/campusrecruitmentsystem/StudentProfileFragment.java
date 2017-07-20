@@ -3,7 +3,6 @@ package com.example.hamid_pc.campusrecruitmentsystem;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -149,10 +148,8 @@ public class StudentProfileFragment extends Fragment {
 
         switch (item.getItemId()) {
             case R.id.miDelete:
-                Log.d("Check", "Student Profile Activity: Deleted Menu Item Selected");
                 mStudentRef.removeValue();
                 mUserRef.removeValue();
-                getActivity().finish();
 
 
         }
